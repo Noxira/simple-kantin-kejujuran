@@ -1,2 +1,5 @@
 venv/
 .venv/
+be/.env
+be/__pycache__/app.cpython-38.pyc
+be/test.py
