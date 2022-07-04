@@ -26,11 +26,23 @@ def home():
 @app.route("/barang-dijual", methods=["GET"])
 @cross_origin()
 def daftar_barang():
+    args = request.args.to_dict()
     item_details = barangDijual.find()
     items = []
     for item in item_details:
         item["_id"] = str(item["_id"])
         items.append(item)
+    print(sorted(items, key=lambda item: item["tanggal"]))
+    if int(args['sort']) == 0:
+        items = sorted(items, key=lambda item: item["tanggal"])
+    if int(args['sort']) == 1:
+        items = sorted(items, key=lambda item: item["tanggal"], reverse=True)
+        print("called")
+    if int(args['sort']) == 2:
+        items = sorted(items, key=lambda item: item["nama"])
+    if int(args['sort']) == 3:
+        items = sorted(items, key=lambda item: item["nama"], reverse=True)
+    # print(items)
     return jsonify(items), 200
 
 @app.route("/hapus-barang", methods=["POST"])
