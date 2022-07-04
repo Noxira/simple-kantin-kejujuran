@@ -42,7 +42,7 @@ section {
 
 h3 {
 	color: var(--dark);
-	font-size: 1rem;
+	font-size: 1.2rem;
 	font-weight: 400;
 	margin-bottom: 0.5rem;
 }
@@ -56,12 +56,12 @@ h4 {
 
 .app-title .title {
 	display: flex;
-  justify-content: center;
+  	justify-content: center;
 }
 
 .app-title .title{
 	color: var(--dark);
-	font-size: 1.5rem;
+	font-size: 2rem;
 	font-weight: 700;
 }
 
@@ -107,9 +107,19 @@ input[type="checkbox"] {
 	margin: 1rem 0;
 } 
 
-.item-list .item {
+.item-header {
+	min-width:100%;
+}
+
+#container {
+	padding: 0.2rem;
+    width: 100%;
+    overflow: auto;
+    white-space:nowrap;
 	display: flex;
-	align-items: center;
+}
+
+.item-list .item {
 	background-color: #FFF;
 	padding: 1rem;
 	border-radius: 0.5rem;
@@ -123,13 +133,10 @@ input[type="checkbox"] {
 	cursor: pointer;
 }
 
-.item .content {
+.item .item-title {
 	flex: 1 1 0%;
-}
-
-.item .content input {
-	color: var(--dark);
-	font-size: 1.125rem;
+  	padding: 0.5rem;
+  	padding-left: 2rem;	
 }
 
 .item .actions {
@@ -137,7 +144,7 @@ input[type="checkbox"] {
 	align-items: center;
 }
 
-.item .actions button {
+.actions button {
 	display: block;
 	padding: 0.5rem;
 	border-radius: 0.25rem;
@@ -146,21 +153,37 @@ input[type="checkbox"] {
 	transition: 0.2s ease-in-out;
 }
 
-.item .actions button:hover {
+.actions button:hover {
 	opacity: 0.75;
 }
 
-.item .actions .edit {
+.actions .edit {
 	margin-right: 0.5rem;
 	background-color: var(--primary);
 }
 
-.item .actions .delete {
+.actions .buy {
 	background-color: var(--danger);
   justify-content: center;
 }
 
-.item.done .item-content input {
-	text-decoration: line-through;
-	color: var(--grey);
+.actions button:hover {
+	opacity: 0.75;
+}
+
+.actions .submit {
+	margin-right: 0.5rem;
+	background-color: var(--primary);
+}
+
+
+img {
+  max-width: 64px;
+  max-height: 64px;
+}
+
+#deskripsi {
+	vertical-align: middle;
+	color:#232323;
+	font-size:0.8rem;
 }
