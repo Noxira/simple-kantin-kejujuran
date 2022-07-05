@@ -12,6 +12,7 @@ const item_sort = ref(0)
 
 const updateSort = (type) => {
   item_sort.value = type
+  updateItems(item_sort.value)
 }
 
 const updateBal = () => {
@@ -127,7 +128,7 @@ const buyItem = (item) => {
  
 onMounted(() => {
   getBalance()
-  updateItems(1)
+  updateItems(item_sort.value)
 })
 
 
