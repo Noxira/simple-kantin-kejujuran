@@ -7,8 +7,8 @@ const input_name = ref("")
 const input_price = ref()
 const img_link = ref("")
 const input_desc = ref("")
-const doing_submission = ref(0)
 const item_sort = ref(0)
+const last_added = ref("")
 
 const updateSort = (type) => {
   item_sort.value = type
@@ -16,7 +16,6 @@ const updateSort = (type) => {
 }
 
 const updateBal = () => {
-    console.log("called")
     let formdata = new FormData()
     formdata.append('saldo_terbarukan', balance.value)
 
@@ -29,7 +28,6 @@ const updateBal = () => {
       )
     .then((res) => {return res.json()})
     .then((data) => {
-        console.log(data)
         if (data.return_code != 1){
           alert('Gagal mengupdate saldo')
         } 
@@ -37,14 +35,15 @@ const updateBal = () => {
 } 
 
 const addItem = () => {
-    if (doing_submission.value == 1){
-      return
-    }
     if (input_name.value === "" || input_price.value <= 0) {
       return
     }
+    if (input_name.value == last_added.value){
+      last_added.value = ""
+      return
+    }
+    last_added.value = input_name.value
 
-    doing_submission.value = 1
     let formdata = new FormData()
     formdata.append('nama', input_name.value)
     formdata.append('harga', input_price.value)
@@ -65,7 +64,6 @@ const addItem = () => {
       )
     .then((res) => {return res.json()})
     .then((data) => {
-        console.log(data)
         if (data.return_code != 1){
           alert('Gagal menambahkan barang')
         } 
@@ -77,7 +75,6 @@ const addItem = () => {
           img_link.value = ""
         }
     })
-    doing_submission.value = 0
 }
 
 const getBalance = () => {
@@ -148,7 +145,7 @@ onMounted(() => {
     <section class="create-listing">
 			<h3>Daftarkan Barang Untuk Dijual</h3>
 
-			<form id="new-listing-form" @submit.prevent="addItem">
+			<form id="new-listing-form" @submit.prevent="addItem()">
 				<h4 style="padding-bottom: 1%">Deskripsikan Barang Mu!</h4>
 
         <div>
@@ -203,7 +200,7 @@ onMounted(() => {
         </div>
 
         <div class="actions" style="padding-top: 1%">
-				  <button class="submit" @click="addItem">Tambah Item</button>
+				  <button class="submit" @click="addItem()">Tambah Item</button>
         </div>
 			</form>
 		</section>
@@ -257,6 +254,9 @@ onMounted(() => {
             </div>
     
             <div class="actions">
+              <h3 style="font-size: 1rem; margin-right:3%">
+                {{item.harga}}
+              </h3>
               <button class="buy" @click="buyItem(item); updateItems(0)">beli</button>
             </div>
           
