@@ -16,7 +16,7 @@ Simple Kantin Kejujuran
 </p>
 
 ## Description
-A simple kantin kejujuran website that consists of a store and balance box. You can edit the store's balance box as well as the items listed. The website is also hosted in Cloudflare Pages in this [Link](https://simple-kantin-kejujuran.pages.dev/)
+A simple kantin kejujuran website that consists of a store and balance box. You can edit the store's balance box as well as the items listed. The website is also hosted in Cloudflare Pages in this [Link](https://simple-kantin-kejujuran.pages.dev/). Built using Vue + Vetur, Flask, and MongoDB
 
 ## Compiling & Running
 1. Install [node JS](https://nodejs.org/en/knowledge/getting-started/npm/what-is-npm/)
